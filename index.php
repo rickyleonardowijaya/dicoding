@@ -38,10 +38,8 @@
     }
     if (isset($_POST['submit'])) {
         try {
-            $name = $_POST['name'];
+            $name = $_POST['nama'];
             $email = $_POST['email'];
-            $job = $_POST['job'];
-            $date = date("Y-m-d");
             // Insert data
             $sql_insert = "INSERT INTO User (ID, nama) 
                         VALUES ('A','A')";
