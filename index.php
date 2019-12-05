@@ -21,7 +21,7 @@
  <form method="post" action="index.php" enctype="multipart/form-data" >
        Nama  <input type="text" name="nama" id="nama"/></br></br>
        Genre <input type="text" name="genre" id="genre"/></br></br>
-       Deskripsi <input type="textarea" name="deskripsi" id="deskripsi"/></br></br>
+       Deskripsi <textarea name="deskripsi" id="deskripsi"></textarea></br></br>
        <input type="submit" name="simpan" value="Simpan" />
        <input type="submit" name="tampilData" value="Tampil Data" />
  </form>
