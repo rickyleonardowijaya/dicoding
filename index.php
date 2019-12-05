@@ -16,7 +16,7 @@
  </style>
  </head>
  <body>
- <h1>Register here!</h1>
+ <h1>Tambahkan Game Kesukaan Kamu</h1>
  <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
        Nama  <input type="text" name="nama" id="nama"/></br></br>
@@ -44,17 +44,15 @@
             // Insert data
             $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,genre,deskripsi) VALUES 
             ('".$name."','".$genre."','".$deskripsi."')";
-            echo ($sql_insert);
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $genre);
             $stmt->bindValue(3, $deskripsi);
             $stmt->execute();
         } catch(Exception $e) {
-            echo "Failed: " . $e;
             echo "Data yang dimasukkan tidak valid, Silahkan masukkan ulang dengan lengkap";
         }
-        echo "<h3>Your're registered!</h3>";
+        echo "<h3>Game berhasil ditambahkan!</h3>";
      } else if (isset($_POST['tampilData'])) {
         try {
             $sql_select = "SELECT * FROM [dbo].[tbl_daftar_game]";
@@ -75,7 +73,7 @@
                 }
                 echo "</table>";
             } else {
-                echo "<h3>No one is currently registered.</h3>";
+                echo "<h3>Tidak ada game yang terdaftar.</h3>";
             }
         } catch(Exception $e) {
             echo "Failed: " . $e;
