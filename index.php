@@ -20,7 +20,7 @@
  <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
        Nama  <input type="text" name="nama" id="nama"/></br></br>
-       Durasi <input type="text" name="durasi" id="durasi"/></br></br>
+       Genre <input type="text" name="genre" id="genre"/></br></br>
        Deskripsi <input type="text" name="deskripsi" id="deskripsi"/></br></br>
        <input type="submit" name="simpan" value="Simpan" />
        <input type="submit" name="tampilData" value="Tampil Data" />
@@ -39,11 +39,11 @@
     if (isset($_POST['simpan'])) {
         try {
             $name = $_POST['nama'];
-            $durasi = $_POST['durasi'];
+            $genre = $_POST['genre'];
             $deskripsi = $_POST['deskripsi'];
             // Insert data
-            $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,durasi,deskripsi) VALUES 
-            (".$name.",".$durasi.",".$deskripsi.")";
+            $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,genre,deskripsi) VALUES 
+            (".$name.",".$genre.",".$deskripsi.")";
          echo $sql_insert;
 //             $stmt = $conn->prepare($sql_insert);
 //             $stmt->bindValue(1, $name);
