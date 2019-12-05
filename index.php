@@ -50,7 +50,7 @@
             $stmt->bindValue(3, $deskripsi);
             $stmt->execute();
         } catch(Exception $e) {
-            //echo "Failed: " . $e;
+            echo "Failed: " . $e;
             echo "Data yang dimasukkan tidak valid, Silahkan masukkan ulang dengan lengkap";
         }
         echo "<h3>Your're registered!</h3>";
