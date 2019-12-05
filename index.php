@@ -43,7 +43,7 @@
             $deskripsi = $_POST['deskripsi'];
             // Insert data
             $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,genre,deskripsi) VALUES 
-            (".$name.",".$genre.",".$deskripsi.")";
+            ('".$name."','".$genre."','".$deskripsi."')";
             echo ($sql_insert);
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
