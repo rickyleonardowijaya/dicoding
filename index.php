@@ -69,7 +69,7 @@
                 echo "<th>Deksripsi</th></tr>";
                 foreach($registrants as $registrant) {
                     echo "<tr><td>".$registrant['id']."</td>";
-                    echo "<td>".$registrant['name']."</td>";
+                    echo "<td>".$registrant['nama']."</td>";
                     echo "<td>".$registrant['genre']."</td>";
                     echo "<td>".$registrant['deskripsi']."</td></tr>";
                 }
