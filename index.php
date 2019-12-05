@@ -37,22 +37,28 @@
         echo "Failed: " . $e;
     }
     if (isset($_POST['simpan'])) {
-        try {
-            $name = $_POST['nama'];
-            $genre = $_POST['genre'];
-            $deskripsi = $_POST['deskripsi'];
-            // Insert data
-            $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,genre,deskripsi) VALUES 
-            ('".$name."','".$genre."','".$deskripsi."')";
-            $stmt = $conn->prepare($sql_insert);
-            $stmt->bindValue(1, $name);
-            $stmt->bindValue(2, $genre);
-            $stmt->bindValue(3, $deskripsi);
-            $stmt->execute();
-        } catch(Exception $e) {
+        if(isset($_POST['nama']) && isset($_POST['genre']) && isset($_POST['deskripsi'])){
+            try {
+                $name = $_POST['nama'];
+                $genre = $_POST['genre'];
+                $deskripsi = $_POST['deskripsi'];
+                // Insert data
+                $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,genre,deskripsi) VALUES 
+                ('".$name."','".$genre."','".$deskripsi."')";
+                $stmt = $conn->prepare($sql_insert);
+                $stmt->bindValue(1, $name);
+                $stmt->bindValue(2, $genre);
+                $stmt->bindValue(3, $deskripsi);
+                $stmt->execute();
+            } catch(Exception $e) {
+                echo "Data yang dimasukkan tidak valid, Silahkan masukkan ulang dengan lengkap";
+            }
+            echo "<h3>Game berhasil ditambahkan!</h3>";
+        }
+        else{
             echo "Data yang dimasukkan tidak valid, Silahkan masukkan ulang dengan lengkap";
         }
-        echo "<h3>Game berhasil ditambahkan!</h3>";
+      
      } else if (isset($_POST['tampilData'])) {
         try {
             $sql_select = "SELECT * FROM [dbo].[tbl_daftar_game]";
