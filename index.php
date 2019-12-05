@@ -43,10 +43,11 @@
             // Insert data
             $sql_insert = "INSERT INTO [dbo].[User] (ID, nama) VALUES 
             (".$name.",".$email.")";
-            $stmt = $conn->prepare($sql_insert);
-            $stmt->bindValue(1, $name);
-            $stmt->bindValue(2, $email);
-            $stmt->execute();
+         echo $sql_insert;
+//             $stmt = $conn->prepare($sql_insert);
+//             $stmt->bindValue(1, $name);
+//             $stmt->bindValue(2, $email);
+//             $stmt->execute();
         } catch(Exception $e) {
             echo "Failed: " . $e;
         }
