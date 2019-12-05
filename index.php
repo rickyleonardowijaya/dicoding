@@ -63,12 +63,12 @@
             if(count($registrants) > 0) {
                 echo "<h2>People who are registered:</h2>";
                 echo "<table style='border: 1px solid black'>";
-                echo "<tr style='border: 1px solid black'><th>Nomor</th>";
-                echo "<th style='border: 1px solid black'>Nama</th>";
-                echo "<th style='border: 1px solid black'>Genre</th>";
-                echo "<th style='border: 1px solid black'>Deksripsi</th></tr>";
+                echo "<tr><th>Nomor</th>";
+                echo "<th>Nama</th>";
+                echo "<th>Genre</th>";
+                echo "<th>Deksripsi</th></tr>";
                 foreach($registrants as $registrant) {
-                    echo "<tr><td>".$registrant['id']."</td>";
+                    echo "<tr style='border: 1px solid black'><td>".$registrant['id']."</td>";
                     echo "<td>".$registrant['nama']."</td>";
                     echo "<td>".$registrant['genre']."</td>";
                     echo "<td>".$registrant['deskripsi']."</td></tr>";
