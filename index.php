@@ -61,17 +61,19 @@
      } else if (isset($_POST['tampilData'])) {
         try {
             $sql_select = "SELECT * FROM [dbo].[tbl_daftar_game]";
+            $k = 0;
             $stmt = $conn->query($sql_select);
             $registrants = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
-                echo "<h2>People who are registered:</h2>";
+                echo "<h2>Game yang sudah terdaftar:</h2>";
                 echo "<table style='border: 1px solid black'>";
                 echo "<tr><th>Nomor</th>";
                 echo "<th>Nama</th>";
                 echo "<th>Genre</th>";
                 echo "<th>Deksripsi</th></tr>";
                 foreach($registrants as $registrant) {
-                    echo "<tr style='border: 1px solid black'><td>".$registrant['id']."</td>";
+                    $k++;
+                    echo "<tr style='border: 1px solid black'><td>".$k."</td>";
                     echo "<td>".$registrant['nama']."</td>";
                     echo "<td>".$registrant['genre']."</td>";
                     echo "<td>".$registrant['deskripsi']."</td></tr>";
