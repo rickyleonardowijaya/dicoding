@@ -41,7 +41,7 @@
             $name = $_POST['nama'];
             $email = $_POST['email'];
             // Insert data
-            $sql_insert = "INSERT INTO User (ID, nama) 
+            $sql_insert = "INSERT INTO User (`ID`, `nama`) 
                         VALUES ('A','A')";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
