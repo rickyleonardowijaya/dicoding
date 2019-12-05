@@ -38,7 +38,7 @@
     }
     if (isset($_POST['submit'])) {
         try {
-            $name = $_POST['nama'];
+            $name = $_POST['name'];
             $email = $_POST['email'];
             // Insert data
             $sql_insert = "INSERT INTO [dbo].[User] (ID, nama) VALUES 
@@ -66,9 +66,9 @@
                 echo "<th>Date</th></tr>";
                 foreach($registrants as $registrant) {
                     echo "<tr><td>".$registrant['ID']."</td>";
-                    echo "<td>".$registrant['nama']."</td>";
-                    echo "<td>".$registrant['nama']."</td>";
-                    echo "<td>".$registrant['nama']."</td></tr>";
+                    echo "<td>".$registrant['name']."</td>";
+                    echo "<td>".$registrant['name']."</td>";
+                    echo "<td>".$registrant['name']."</td></tr>";
                 }
                 echo "</table>";
             } else {
