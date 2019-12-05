@@ -41,7 +41,7 @@
             $name = $_POST['nama'];
             $email = $_POST['email'];
             // Insert data
-            $sql_insert = "INSERT INTO [dbo].[User] (ID, nama) VALUES (70,$name)";
+            $sql_insert = "INSERT INTO [dbo].[User] (ID, nama) VALUES (".$name.","$email")";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
