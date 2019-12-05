@@ -52,7 +52,7 @@
         echo "<h3>Your're registered!</h3>";
      } else if (isset($_POST['load_data'])) {
         try {
-            //$sql_select = "SELECT * FROM User";
+            $sql_select = "SELECT * FROM [dbo].[User]";
             $stmt = $conn->query($sql_select);
             $registrants = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
@@ -63,10 +63,10 @@
                 echo "<th>Job</th>";
                 echo "<th>Date</th></tr>";
                 foreach($registrants as $registrant) {
-                    echo "<tr><td>".$registrant['name']."</td>";
-                    echo "<td>".$registrant['email']."</td>";
-                    echo "<td>".$registrant['job']."</td>";
-                    echo "<td>".$registrant['date']."</td></tr>";
+                    echo "<tr><td>".$registrant['ID']."</td>";
+                    echo "<td>".$registrant['nama']."</td>";
+                    echo "<td>".$registrant['nama']."</td>";
+                    echo "<td>".$registrant['nama']."</td></tr>";
                 }
                 echo "</table>";
             } else {
