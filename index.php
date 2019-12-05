@@ -44,11 +44,11 @@
             // Insert data
             $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,genre,deskripsi) VALUES 
             (".$name.",".$genre.",".$deskripsi.")";
-         echo $sql_insert;
-//             $stmt = $conn->prepare($sql_insert);
-//             $stmt->bindValue(1, $name);
-//             $stmt->bindValue(2, $email);
-//             $stmt->execute();
+            $stmt = $conn->prepare($sql_insert);
+            $stmt->bindValue(1, $name);
+            $stmt->bindValue(2, $genre);
+            $stmt->bindValue(3, $deskripsi);
+            $stmt->execute();
         } catch(Exception $e) {
             //echo "Failed: " . $e;
             echo "Data yang dimasukkan tidak valid, Silahkan masukkan ulang dengan lengkap";
