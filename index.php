@@ -17,7 +17,6 @@
  </head>
  <body>
  <h1>Tambahkan Game Kesukaan Kamu</h1>
- <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
        Nama  <input type="text" name="nama" id="nama"/></br></br>
        Genre <input type="text" name="genre" id="genre"/></br></br>
