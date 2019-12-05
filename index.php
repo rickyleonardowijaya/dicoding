@@ -19,11 +19,11 @@
  <h1>Register here!</h1>
  <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
-       Name  <input type="text" name="name" id="name"/></br></br>
-       Email <input type="text" name="email" id="email"/></br></br>
-       Job <input type="text" name="job" id="job"/></br></br>
-       <input type="submit" name="submit" value="Submit" />
-       <input type="submit" name="load_data" value="Load Data" />
+       Nama  <input type="text" name="nama" id="nama"/></br></br>
+       Durasi <input type="text" name="durasi" id="durasi"/></br></br>
+       Deskripsi <input type="text" name="deskripsi" id="deskripsi"/></br></br>
+       <input type="submit" name="simpan" value="Simpan" />
+       <input type="submit" name="tampilData" value="Tampil Data" />
  </form>
  <?php
     $host = "tcp:dicodingappservertest.database.windows.net,1433";
@@ -36,23 +36,25 @@
     } catch(Exception $e) {
         echo "Failed: " . $e;
     }
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['simpan'])) {
         try {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
+            $name = $_POST['nama'];
+            $durasi = $_POST['durasi'];
+            $deskripsi = $_POST['deskripsi'];
             // Insert data
-            $sql_insert = "INSERT INTO [dbo].[User] (ID, nama) VALUES 
-            (".$name.",".$email.")";
+            $sql_insert = "INSERT INTO [dbo].[tbl_daftar_game] (nama,durasi,deskripsi) VALUES 
+            (".$name.",".$durasi.",".$deskripsi.")";
          echo $sql_insert;
 //             $stmt = $conn->prepare($sql_insert);
 //             $stmt->bindValue(1, $name);
 //             $stmt->bindValue(2, $email);
 //             $stmt->execute();
         } catch(Exception $e) {
-            echo "Failed: " . $e;
+            //echo "Failed: " . $e;
+            echo "Data yang dimasukkan tidak valid, Silahkan masukkan ulang dengan lengkap";
         }
         echo "<h3>Your're registered!</h3>";
-     } else if (isset($_POST['load_data'])) {
+     } else if (isset($_POST['tampilData'])) {
         try {
             $sql_select = "SELECT * FROM [dbo].[User]";
             $stmt = $conn->query($sql_select);
