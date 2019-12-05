@@ -62,7 +62,7 @@
             $registrants = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
                 echo "<h2>People who are registered:</h2>";
-                echo "<table style='border 1px solid black'>";
+                echo "<table style='border: 1px solid black'>";
                 echo "<tr><th>Nomor</th>";
                 echo "<th>Nama</th>";
                 echo "<th>Genre</th>";
