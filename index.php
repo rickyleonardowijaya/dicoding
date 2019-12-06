@@ -117,12 +117,28 @@ if (isset($_GET["Cleanup"])) {
 //         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 
 //         List blobs.
-        $listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix("");
+//         $listBlobsOptions = new ListBlobsOptions();
+//         $listBlobsOptions->setPrefix("");
 
-        echo "These are the blobs present in the container: <br/>";
+//         echo "These are the blobs present in the container: <br/>";
 
-        do{
+//         do{
+//             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+//             foreach ($result->getBlobs() as $blob)
+//             {
+//                 echo $blob->getName().": ".$blob->getUrl()."<br />";
+		
+// 	echo "<img src='".$blob->getUrl()."' width='700' height='500'>";
+//             	echo "<br/>";
+// 	    }
+        
+//             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
+//         } while($result->getContinuationToken());
+//         echo "<br />";
+	    
+	    $listBaru = new ListBlobsOptions();
+	    $listBaru->setPrefix($_FILES['image']['name']);
+	            do{
             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
             foreach ($result->getBlobs() as $blob)
             {
