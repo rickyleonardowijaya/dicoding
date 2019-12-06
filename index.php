@@ -112,11 +112,13 @@ if (isset($_GET["Cleanup"])) {
  
             // Request body.
             data: '{"url": ' + '"' + sourceImageUrl + '"}',
+	  
         })
  
         .done(function(data) {
             // Show formatted JSON on webpage.
             $("#responseTextArea").val(JSON.stringify(data, null, 2));
+	    $("#responseTextArea").val(data["description"]["captions"]["text"]);
         })
  
         .fail(function(jqXHR, textStatus, errorThrown) {
