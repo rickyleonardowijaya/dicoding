@@ -175,6 +175,7 @@ if (isset($_GET["Cleanup"])) {
  
         // Display the image.
         var sourceImageUrl = document.getElementById("imageanalisis").value;
+	    console.log(sourceImageUrl);
         document.querySelector("#sourceImage").src = sourceImageUrl;
  
         // Make the REST API call.
