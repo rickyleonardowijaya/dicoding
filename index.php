@@ -126,7 +126,7 @@ if (isset($_GET["Cleanup"])) {
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
 		    
-	echo "<img src='".$blob->getUrl()."' width='100' height='100'>";
+	echo "<img src='".$blob->getUrl()."' width='300' height='300'>";
             }
         
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
@@ -134,10 +134,10 @@ if (isset($_GET["Cleanup"])) {
         echo "<br />";
 
         // Get blob.
-        echo "This is the content of the blob uploaded: ";
-        $blob = $blobClient->getBlob($containerName, $fileToUpload);
-	    fpassthru($blob->getContentStream());
-        echo "<br />";
+//         echo "This is the content of the blob uploaded: ";
+//         $blob = $blobClient->getBlob($containerName, $fileToUpload);
+// 	    fpassthru($blob->getContentStream());
+//         echo "<br />";
     }
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
