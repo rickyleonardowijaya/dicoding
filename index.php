@@ -83,7 +83,6 @@ if (isset($_GET["Cleanup"])) {
         echo $fileToUpload;
         echo "<br />";
         
-//         $content = fopen($fileToUpload, "r");
 	$fileToUpload = $_FILES['image']['tmp_name'];
 	if (move_uploaded_file($_FILES['image']['tmp_name'], $fileToUpload)) {
 
@@ -96,15 +95,22 @@ if (isset($_GET["Cleanup"])) {
 	    }
 	$targetdir = "img/";
         $targetFile = $targetdir.basename($_FILES["image"]["name"]);
+	    
+	    $myfile = fopen($fileToUpload, "r") or die("Unable to open file!");
+
+        fclose($myfile);
+	    
+	    
+        $content = fopen($fileToUpload, "r");
 	
         //Upload blob
-//         $blobClient->createBlockBlob($containerName, $fileToUpload, $fileToUpload);
+        $blobClient->createBlockBlob($containerName, $fileToUpload, $fileToUpload);
 
-// //         List blobs.
-//         $listBlobsOptions = new ListBlobsOptions();
-//         $listBlobsOptions->setPrefix("HelloWorld");
+//         List blobs.
+        $listBlobsOptions = new ListBlobsOptions();
+        $listBlobsOptions->setPrefix("HelloWorld");
 
-//         echo "These are the blobs present in the container: ";
+        echo "These are the blobs present in the container: ";
 
 //         do{
 //             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
