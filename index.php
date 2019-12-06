@@ -78,7 +78,12 @@ if (isset($_GET["Cleanup"])) {
 	    
 	     $targetdir = "img/";
         $targetFile = $targetdir.basename($_FILES["image"]["name"]);
-        file_put_contents($targetFile, file_get_contents($_FILES['image']["tmp_name"]));
+        if(file_put_contents($targetFile, file_get_contents($_FILES['image']["tmp_name"]))){
+		echo "Sukses";
+	}
+	    else{
+	    	echo "GAGA";
+	    }
 	
         //Upload blob
 //         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
