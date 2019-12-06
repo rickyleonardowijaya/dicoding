@@ -48,9 +48,9 @@ $blobClient = BlobRestProxy::createBlobService($connectionString);
 
 $fileToUpload = "HelloWorld.txt";
 
-if (isset($_GET["Cleanup"])) {
-    // Create container options object.
     $createContainerOptions = new CreateContainerOptions();
+if (!isset($_GET["Cleanup"])) {
+    // Create container options object.
 
     // Set public access policy. Possible values are
     // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
@@ -72,7 +72,7 @@ if (isset($_GET["Cleanup"])) {
     $createContainerOptions->addMetaData("key1", "value1");
     $createContainerOptions->addMetaData("key2", "value2");
 
-      $containerName = "blockblobs".generateRandomString();
+      $containerName = "submission";
 
     try {
         // Create container.
