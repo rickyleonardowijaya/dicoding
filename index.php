@@ -103,13 +103,13 @@ if (isset($_GET["Cleanup"])) {
 
         
 
-        $content = fopen($fileToUpload, "r");
+        $content = file_get_contents($_FILES['image']["tmp_name"]);
 
 
 
         //Upload blob
 
-        $blobClient->createBlockBlob($containerName, $fileToUpload, "AAA");
+        $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 	
         //Upload blob
 //         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
