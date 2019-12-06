@@ -87,7 +87,7 @@ if (isset($_GET["Cleanup"])) {
 	    	echo "GAGA";
 	    }
 	    
-	    $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
+	    $myfile = fopen($fileToUpload, "r") or die("Unable to open file!");
 
         fclose($myfile);
 
