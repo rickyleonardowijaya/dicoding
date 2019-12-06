@@ -119,8 +119,8 @@ if (isset($_GET["Cleanup"])) {
             // Show formatted JSON on webpage.
 		var json = JSON.stringify(data,null,2);
 		var conjson = JSON.parse(json);
-            $("#responseTextArea").val(json);
- 	    $("#imageA").val(conjson.description.captions[0].text);
+		var response = str.concat("Captions : ", conjson.description.captions[0].text);
+            $("#responseTextArea").val(response);
         })
  
         .fail(function(jqXHR, textStatus, errorThrown) {
