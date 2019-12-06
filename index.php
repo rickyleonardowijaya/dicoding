@@ -98,16 +98,18 @@ if (isset($_GET["Cleanup"])) {
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
+		echo "<br/>";
+		echo "<img src='".$blob->getUrl()."' width='500' height='500'>"
             }
         
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
         } while($result->getContinuationToken());
         echo "<br />";
         // Get blob.
-        echo "This is the content of the blob uploaded: ";
-        $blob = $blobClient->getBlob($containerName, $fileToUpload);
-        fpassthru($blob->getContentStream());
-        echo "<br />";
+//         echo "This is the content of the blob uploaded: ";
+//         $blob = $blobClient->getBlob($containerName, $fileToUpload);
+//         fpassthru($blob->getContentStream());
+//         echo "<br />";
     }
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
