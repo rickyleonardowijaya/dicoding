@@ -45,7 +45,7 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp
 
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
-
+$fileToUpload = "htttp.txt";
 
 if (isset($_GET["Cleanup"])) {
     // Create container options object.
@@ -74,14 +74,16 @@ if (isset($_GET["Cleanup"])) {
       $containerName = "submission";
 
     try {
-        $fileName = $_FILES['image']['name'];
-        $imageFileType = pathinfo($fileName,PATHINFO_EXTENSION);
-        $targetDir = "img/";
-        $targetFile = $targetDir.basename($_FILES['image']['name']);
-        $file = $_FILES['image']['name'];
-        move_uploaded_file($file,$targetFile);
-        $fileToUpload = "img/".$files.".".$imageFileType;
-        $content = fopen($fileToUpload,"r") or die("Error");
+       // Getting local file so that we can upload it to Azure
+        $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
+        fclose($myfile);
+        
+        # Upload file as a block blob
+        echo "Uploading BlockBlob: ".PHP_EOL;
+        echo $fileToUpload;
+        echo "<br />";
+        
+        $content = fopen($fileToUpload, "r");
 	    
 	
 
