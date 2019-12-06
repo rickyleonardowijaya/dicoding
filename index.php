@@ -135,7 +135,7 @@ if (isset($_GET["Cleanup"])) {
 ?>
 
 
-<form method="post" action="phpQS.php?Cleanup&containerName=<?php echo $containerName; ?>">
+<form method="post" action="phpQS.php?Cleanup&containerName=<?php echo $containerName; ?>" enctype="multipart/form-data">
     <input type="file" name="image" />
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
