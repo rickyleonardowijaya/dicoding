@@ -49,6 +49,7 @@ if (isset($_GET["upload"])) {
     // Create blob client.
     $blobClient = BlobRestProxy::createBlobService($connectionString);
 
+    $createContainerOptions = new CreateContainerOptions();
     $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
     // Set container metadata.
