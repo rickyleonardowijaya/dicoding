@@ -90,7 +90,7 @@ if (isset($_GET["Cleanup"])) {
         file_put_contents($targetFile, file_get_contents($_FILES['image']["tmp_name"]));
 
         //Upload blob
-        $blobClient->createBlockBlob($containerName, $fileToUpload, $_FILES['image']['tmp_name']);
+        $blobClient->createBlockBlob($containerName, $fileToUpload, "HAHAHAH");
 
 //         List blobs.
         $listBlobsOptions = new ListBlobsOptions();
