@@ -72,11 +72,10 @@ if (!isset($_GET["Cleanup"])) {
     $createContainerOptions->addMetaData("key1", "value1");
     $createContainerOptions->addMetaData("key2", "value2");
 
-      $containerName = "blockblobs".generateRandomString();
+      $containerName = "submission";
 
     try {
         // Create container.
-        $blobClient->createContainer($containerName, $createContainerOptions);
 
         // Getting local file so that we can upload it to Azure
         $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
