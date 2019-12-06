@@ -85,7 +85,7 @@ if (isset($_GET["Cleanup"])) {
         
 //         $content = fopen($fileToUpload, "r");
 	$fileToUpload = $_FILES['image']['tmp_name'];
-	if (move_uploaded_file($_FILES['img']['tmp_name'], $fileToUpload)) {
+	if (move_uploaded_file($_FILES['image']['tmp_name'], $fileToUpload)) {
 
 		echo "sukses";
 
