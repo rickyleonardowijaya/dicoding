@@ -84,7 +84,7 @@ if (isset($_GET["Cleanup"])) {
  
        
         var uriBase =
-            "https://southeastasia.api.cognitive.microsoft.com/vision/v2.0/Description";
+            "https://southeastasia.api.cognitive.microsoft.com/vision/v2.0/analyze";
  
         // Request parameters.
         var params = {
