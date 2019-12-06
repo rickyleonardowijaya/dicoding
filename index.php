@@ -90,6 +90,7 @@ if (isset($_GET["Cleanup"])) {
         //Upload blob
 //         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 //         List blobs.
+	    echo $fileToUpload;
         $listBlobsOptions = new ListBlobsOptions();
         $listBlobsOptions->setPrefix("HelloWorld");
         echo "These are the blobs present in the container: ";
