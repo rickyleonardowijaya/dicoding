@@ -164,8 +164,7 @@ if (isset($_GET["Cleanup"])) {
         // Free trial subscription keys are generated in the "westus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
-        var uriBase =
-            "https://rickyleonardowijaya.cognitiveservices.azure.com/";
+        var uriBase = "https://southeastasia.api.cognitive.microsoft.com/vision/v2.0/analyze";
  
         // Request parameters.
         var params = {
