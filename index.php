@@ -90,7 +90,7 @@ if (!isset($_GET["Cleanup"])) {
         $content = fopen($fileToUpload, "r");
 
         //Upload blob
-//         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+        $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 
         // List blobs.
         $listBlobsOptions = new ListBlobsOptions();
@@ -98,22 +98,22 @@ if (!isset($_GET["Cleanup"])) {
 
         echo "These are the blobs present in the container: ";
 
-//         do{
-//             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
-//             foreach ($result->getBlobs() as $blob)
-//             {
-//                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-//             }
+        do{
+            $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+            foreach ($result->getBlobs() as $blob)
+            {
+                echo $blob->getName().": ".$blob->getUrl()."<br />";
+            }
         
-//             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
-//         } while($result->getContinuationToken());
-//         echo "<br />";
+            $listBlobsOptions->setContinuationToken($result->getContinuationToken());
+        } while($result->getContinuationToken());
+        echo "<br />";
 
-//         // Get blob.
-//         echo "This is the content of the blob uploaded: ";
-//         $blob = $blobClient->getBlob($containerName, $fileToUpload);
-//         fpassthru($blob->getContentStream());
-//         echo "<br />";
+        // Get blob.
+        echo "This is the content of the blob uploaded: ";
+        $blob = $blobClient->getBlob($containerName, $fileToUpload);
+        fpassthru($blob->getContentStream());
+        echo "<br />";
     }
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
@@ -153,6 +153,11 @@ else
 }
 ?>
 
+<p>Pilih gambar yang akan di Analisa</p>
+    <form action="" method="POST">
+        <input type="file" name="image" id="image"><br><br>
+        <input type="submit" value="Upload" name="upload" class="btn btn-primary">
+    </form>
 
 <form method="post" action="index.php?Cleanup&containerName=<?php echo $containerName; ?>">
     <button type="submit">Press to clean up all resources created by this sample</button>
