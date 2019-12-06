@@ -43,7 +43,7 @@ use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 
 
-if (isset($_GET["upload"])) {
+if (isset($_POST["upload"])) {
     $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp;AccountKey=9HBvgsWyPqN+afxqSuELsdHJQPcI/kDfpd/amikDzmFReuw8CtDnm4klnp87ys5u9pQpcyHvl6+BZyF5yVY0BQ==;EndpointSuffix=core.windows.net";
 
     // Create blob client.
