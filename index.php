@@ -175,7 +175,7 @@ if (isset($_GET["Cleanup"])) {
         };
  
         // Display the image.
-        var sourceImageUrl = document.getElementById("inputImage").value;
+        var sourceImageUrl = <?php $tester; ?>;
         document.querySelector("#sourceImage").src = sourceImageUrl;
  
         // Make the REST API call.
