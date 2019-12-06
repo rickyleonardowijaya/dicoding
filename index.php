@@ -69,7 +69,7 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 ?>
 
 <p>Pilih gambar yang akan di Analisa</p>
-    <form action="" method="POST">
+    <form action="index.php" method="POST">
         <input type="file" name="image" id="image"><br><br>
         <input type="submit" value="Upload" name="upload" class="btn btn-primary">
     </form>
