@@ -147,14 +147,6 @@ if (isset($_GET["Cleanup"])) {
 </head>
 <body>
  
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Analyze Sample</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-</head>
-<body>
- 
 <script type="text/javascript">
     function processImage() {
         // **********************************************
@@ -242,4 +234,5 @@ Image to analyze:
 </div>
 </body>
 </html>
+
 
