@@ -86,8 +86,8 @@ if (isset($_GET["Cleanup"])) {
         echo $fileToUpload;
         echo "<br />";
         
-        $fileToUpload = $_FILES["fileToUpload"]["name"];
-	    $content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
+        $fileToUpload = $_FILES["image"]["name"];
+	    $content = fopen($_FILES["image"]["tmp_name"], "r");
 
         //Upload blob
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
