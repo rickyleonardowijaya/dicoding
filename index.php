@@ -117,7 +117,8 @@ if (isset($_GET["Cleanup"])) {
  
         .done(function(data) {
             // Show formatted JSON on webpage.
-            $("#responseTextArea").val(JSON.stringify(data, null, 2)[2].description);
+		var json = JSON.stringify(data,null,2);
+            $("#responseTextArea").val(json);
 // 	    $("#responseTextArea").val(data[2].description[1].text);
         })
  
