@@ -62,6 +62,9 @@ if (isset($_GET["upload"])) {
 	echo fread($content, filesize($fileToUpload));
 		
 	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+	$listBlobsOptions = new ListBlobsOptions();
+$listBlobsOptions->setPrefix("");
+$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 } 
 ?>
 
