@@ -48,7 +48,7 @@ $blobClient = BlobRestProxy::createBlobService($connectionString);
 
 $fileToUpload = "HelloWorld123.txt";
 
-if (!isset($_GET["Cleanup"])) {
+if (isset($_GET["Cleanup"])) {
     // Create container options object.
     $createContainerOptions = new CreateContainerOptions();
 
@@ -86,7 +86,8 @@ if (!isset($_GET["Cleanup"])) {
         echo $fileToUpload;
         echo "<br />";
         
-        $content = fopen($fileToUpload, "r");
+        $fileToUpload = $_FILES["fileToUpload"]["name"];
+	    $content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
 
         //Upload blob
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
@@ -130,29 +131,11 @@ if (!isset($_GET["Cleanup"])) {
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
-} 
-else 
-{
-
-    try{
-        // Delete container.
-        echo "Deleting Container".PHP_EOL;
-        echo $_GET["containerName"].PHP_EOL;
-        echo "<br />";
-        $blobClient->deleteContainer($_GET["containerName"]);
-    }
-    catch(ServiceException $e){
-        // Handle exception based on error codes and messages.
-        // Error codes and messages are here:
-        // http://msdn.microsoft.com/library/azure/dd179439.aspx
-        $code = $e->getCode();
-        $error_message = $e->getMessage();
-        echo $code.": ".$error_message."<br />";
-    }
 }
 ?>
 
 
 <form method="post" action="phpQS.php?Cleanup&containerName=<?php echo $containerName; ?>">
+    <input type="file" name="image" />
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
