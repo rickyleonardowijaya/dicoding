@@ -99,7 +99,7 @@ if (isset($_GET["Cleanup"])) {
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-		$tester = $blob->getUrl()
+		$tester = $blob->getUrl();
 		echo $tester;
 		  
 		echo "<br/>";
