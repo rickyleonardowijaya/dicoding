@@ -109,7 +109,7 @@ if (isset($_GET["Cleanup"])) {
 
         //Upload blob
 
-        $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+        $blobClient->createBlockBlob($containerName, $fileToUpload, "AAA");
 	
         //Upload blob
 //         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
