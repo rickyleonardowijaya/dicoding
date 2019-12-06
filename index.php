@@ -128,7 +128,7 @@ if (isset($_GET["Cleanup"])) {
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
 		    
-	echo "<img src='".$blob->getUrl()."' width='300' height='1000'>";
+	echo "<img src='".$blob->getUrl()."' width='1000' height='300'>";
             }
         
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
