@@ -154,7 +154,7 @@ if (isset($_GET["Cleanup"])) {
         // **********************************************
  
         // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "<subscriptionKey>";
+        var subscriptionKey = "a8b47712688c4154818536360975762b";
  
         // You must use the same Azure region in your REST API method as you used to
         // get your subscription keys. For example, if you got your subscription keys
