@@ -208,17 +208,7 @@ if (isset($_GET["Cleanup"])) {
         });
     };
 </script>
- 
-<h1>Analyze image:</h1>
-Enter the URL to an image, then click the <strong>Analyze image</strong> button.
-<br><br>
-Image to analyze:
-<html>
-<head>
-    <title>Analyze Sample</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-</head>
-<body>
+
  
 <script type="text/javascript">
     function processImage() {
