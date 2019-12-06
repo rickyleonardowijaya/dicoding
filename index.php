@@ -50,6 +50,7 @@ $fileToUpload = "HelloWorld.txt";
 
 if (!isset($_GET["Cleanup"])) {
     // Create container options object.
+    $createContainerOptions = new CreateContainerOptions();
 
     // Set public access policy. Possible values are
     // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
@@ -71,10 +72,11 @@ if (!isset($_GET["Cleanup"])) {
     $createContainerOptions->addMetaData("key1", "value1");
     $createContainerOptions->addMetaData("key2", "value2");
 
-      $containerName = "submission";
+      $containerName = "blockblobs".generateRandomString();
 
     try {
         // Create container.
+        $blobClient->createContainer($containerName, $createContainerOptions);
 
         // Getting local file so that we can upload it to Azure
         $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
@@ -153,6 +155,5 @@ else
 
 
 <form method="post" action="phpQS.php?Cleanup&containerName=<?php echo $containerName; ?>">
-    <input type="file" name="image" />
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
