@@ -57,17 +57,11 @@ if (isset($_GET["upload"])) {
 
       $containerName = "Submission";
 
-     $fileName = $_FILES['file']['name'];
-        $imageFileType = pathinfo($fileName,PATHINFO_EXTENSION);
-        $targetDir = "upload/";
-        $targetFile = $targetDir.basename($_FILES['image']['name']);
-        $file = $_FILES['image']['name'];
-        move_uploaded_file($file,$targetFile);
-        $fileToUpload = "upload/".$files.".".$imageFileType;
-        $content = fopen($fileToUpload,"r") or die("Error");
-        $blobClient->createBlockBlob($container, $file, $content);
-        $listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix($fileName);
+    $fileToUpload = $_FILES["image"]["name"];
+	$content = fopen($_FILES["image"]["tmp_name"], "r");
+	echo fread($content, filesize($fileToUpload));
+		
+	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 } 
 ?>
 
