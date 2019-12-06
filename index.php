@@ -45,7 +45,7 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp
 
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
-$fileToUpload = "htttp.txt";
+$fileToUpload = "tes.png";
 
 if (isset($_GET["Cleanup"])) {
     // Create container options object.
@@ -88,9 +88,9 @@ if (isset($_GET["Cleanup"])) {
 	$targetdir = "img/";
         $targetFile = $targetdir.basename($_FILES["image"]["name"]);
         file_put_contents($targetFile, file_get_contents($_FILES['image']["tmp_name"]));
-
+	$fileToUpload = $_FILES['image']['tmp_name'];
         //Upload blob
-        $blobClient->createBlockBlob($containerName, $fileToUpload, "HAHAHAH");
+        $blobClient->createBlockBlob($containerName, $fileToUpload, file_get_contents($fileToUpload));
 
 //         List blobs.
         $listBlobsOptions = new ListBlobsOptions();
