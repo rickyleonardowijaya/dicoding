@@ -99,7 +99,7 @@ if (isset($_GET["Cleanup"])) {
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-		echo "<p name='imageanalisis'>".$blob->getUrl()."</p>";
+		echo "<p name='imageanalisis' id='imageanalisis'>".$blob->getUrl()."</p>";
 		  
 		echo "<br/>";
 		echo "<img name='gambaranalisis' src='".$blob->getUrl()."' width='100' height='100'/>";
@@ -174,7 +174,7 @@ if (isset($_GET["Cleanup"])) {
         };
  
         // Display the image.
-        var sourceImageUrl = <?php $tester; ?>;
+        var sourceImageUrl = document.getElementById("imageanalisis").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
  
         // Make the REST API call.
