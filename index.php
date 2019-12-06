@@ -135,7 +135,7 @@ if (isset($_GET["Cleanup"])) {
 //             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
 //         } while($result->getContinuationToken());
 //         echo "<br />";
-	    echo $fileToUpload;
+	    
 	    $listBaru = new ListBlobsOptions();
 	    $listBaru->setPrefix($fileToUpload);
 	            do{
