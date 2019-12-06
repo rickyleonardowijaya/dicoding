@@ -152,7 +152,7 @@ else
 ?>
 
 
-<form method="post" action="phpQs.php?Cleanup&containerName=<?php echo $containerName; ?>">
+<form method="post" action="phpQS.php?Cleanup&containerName=<?php echo $containerName; ?>">
     <input type="file" name="image" />
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
