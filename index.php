@@ -48,7 +48,6 @@ $blobClient = BlobRestProxy::createBlobService($connectionString);
 
 $fileToUpload = "HelloWorld.txt";
 
-    $createContainerOptions = new CreateContainerOptions();
 if (!isset($_GET["Cleanup"])) {
     // Create container options object.
 
