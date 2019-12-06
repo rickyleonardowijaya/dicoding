@@ -63,7 +63,8 @@ if (isset($_GET["upload"])) {
         $blobClient->createContainer($containerName, $createContainerOptions);
 
         // Getting local file so that we can upload it to Azure
-        $fileToUpload = $_FILES["fileToUpload"]["name"];
+        $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
+        fclose($myfile);
         
         # Upload file as a block blob
         echo "Uploading BlockBlob: ".PHP_EOL;
