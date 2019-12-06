@@ -120,16 +120,17 @@ if (isset($_GET["Cleanup"])) {
         $listBlobsOptions = new ListBlobsOptions();
         $listBlobsOptions->setPrefix("");
 
-        echo "These are the blobs present in the container: ";
+        echo "These are the blobs present in the container: <br/>";
 
         do{
             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-		echo "<br/>";
+		
 	echo "<img src='".$blob->getUrl()."' width='700' height='500'>";
-            }
+            	echo "<br/>";
+	    }
         
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
         } while($result->getContinuationToken());
