@@ -103,7 +103,7 @@ if (isset($_GET["Cleanup"])) {
 		echo $tester;
 		  
 		echo "<br/>";
-		echo "<img src='".$blob->getUrl()."' width='100' height='100'/>";
+		echo "<img name='gambaranalisis' src='".$blob->getUrl()."' width='100' height='100'/>";
             }
         
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
@@ -248,7 +248,7 @@ Image to analyze:
         };
  
         // Display the image.
-        var sourceImageUrl = document.getElementById("image").value;
+        var sourceImageUrl = document.getElementById("gambaranalisis").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
  
         // Make the REST API call.
