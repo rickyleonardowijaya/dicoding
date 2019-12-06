@@ -47,23 +47,7 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 $fileToUpload = "tes.png";
 
-$listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix("");
 
-        echo "These are the blobs present in the container: ";
-
-        do{
-            $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
-            foreach ($result->getBlobs() as $blob)
-            {
-                echo $blob->getName().": ".$blob->getUrl()."<br />";
-		    
-	echo "<img src='".$blob->getUrl()."' width='300' height='1000'>";
-            }
-        
-            $listBlobsOptions->setContinuationToken($result->getContinuationToken());
-        } while($result->getContinuationToken());
-        echo "<br />";
 
 if (isset($_GET["Cleanup"])) {
     // Create container options object.
