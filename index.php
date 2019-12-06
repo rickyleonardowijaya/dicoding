@@ -104,7 +104,7 @@ if (isset($_GET["Cleanup"])) {
         $content = fopen($fileToUpload, "r");
 	
         //Upload blob
-        $blobClient->createBlockBlob($containerName, $fileToUpload, $fileToUpload);
+        $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 
 //         List blobs.
         $listBlobsOptions = new ListBlobsOptions();
