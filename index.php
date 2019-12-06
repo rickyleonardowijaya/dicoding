@@ -46,7 +46,7 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 
-$fileToUpload = "HelloWorld.txt";
+$fileToUpload = "HelloWorld123.txt";
 
 if (!isset($_GET["Cleanup"])) {
     // Create container options object.
