@@ -49,7 +49,6 @@ if (isset($_GET["upload"])) {
     // Create blob client.
     $blobClient = BlobRestProxy::createBlobService($connectionString);
 
-    $fileToUpload = "HelloWorld.txt";
     $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
     // Set container metadata.
