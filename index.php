@@ -75,7 +75,6 @@ if (!isset($_GET["Cleanup"])) {
 
     try {
         // Create container.
-        $blobClient->createContainer($containerName, $createContainerOptions);
 
         // Getting local file so that we can upload it to Azure
         $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
@@ -153,7 +152,7 @@ else
 ?>
 
 
-<form method="post" action="phpQS.php?Cleanup&containerName=<?php echo $containerName; ?>">
+<form method="post" action="index.php?Cleanup&containerName=<?php echo $containerName; ?>">
     <input type="file" name="image" />
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
