@@ -43,7 +43,7 @@ use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 
 
-if (isset($_POST["upload"])) {
+if (isset($_GET["upload"])) {
     $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp;AccountKey=9HBvgsWyPqN+afxqSuELsdHJQPcI/kDfpd/amikDzmFReuw8CtDnm4klnp87ys5u9pQpcyHvl6+BZyF5yVY0BQ==;EndpointSuffix=core.windows.net";
 
     // Create blob client.
@@ -69,7 +69,7 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 ?>
 
 <p>Pilih gambar yang akan di Analisa</p>
-    <form action="index.php" method="POST">
+    <form action="index.php" method="get">
         <input type="file" name="image" id="image"><br><br>
         <input type="submit" value="Upload" name="upload" class="btn btn-primary">
     </form>
