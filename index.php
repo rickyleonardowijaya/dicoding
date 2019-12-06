@@ -127,7 +127,7 @@ if (isset($_GET["Cleanup"])) {
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-		    
+		echo "<br/>";
 	echo "<img src='".$blob->getUrl()."' width='700' height='500'>";
             }
         
@@ -163,5 +163,5 @@ if (isset($_GET["Cleanup"])) {
 
 <form method="post" action="index.php?Cleanup&containerName=<?php echo $containerName; ?>" enctype="multipart/form-data">
     <input type="file" name="image" />
-    <button type="submit">Press to clean up all resources created by this sample</button>
+    <button type="submit">Analisis</button>
 </form>
