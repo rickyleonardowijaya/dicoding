@@ -92,7 +92,7 @@ if (isset($_GET["Cleanup"])) {
         //Upload blob
 //         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 
-        List blobs.
+//         List blobs.
         $listBlobsOptions = new ListBlobsOptions();
         $listBlobsOptions->setPrefix("HelloWorld");
 
