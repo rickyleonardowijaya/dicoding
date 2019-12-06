@@ -245,7 +245,7 @@ Image to analyze:
         };
  
         // Display the image.
-        var sourceImageUrl = document.getElementById("inputImage").value;
+        var sourceImageUrl = document.getElementById("image").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
  
         // Make the REST API call.
