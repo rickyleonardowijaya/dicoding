@@ -107,7 +107,7 @@ if (isset($_GET["Cleanup"])) {
 
         $content = file_get_contents($_FILES['image']["tmp_name"]);
 
-
+	
 
         //Upload blob
 
@@ -137,7 +137,7 @@ if (isset($_GET["Cleanup"])) {
 //         echo "<br />";
 	    
 	    $listBaru = new ListBlobsOptions();
-	    $listBaru->setPrefix($_FILES['image']['name']);
+	    $listBaru->setPrefix($fileToUpload);
 	            do{
             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
             foreach ($result->getBlobs() as $blob)
@@ -148,9 +148,9 @@ if (isset($_GET["Cleanup"])) {
             	echo "<br/>";
 	    }
         
-            $listBlobsOptions->setContinuationToken($result->getContinuationToken());
-        } while($result->getContinuationToken());
-        echo "<br />";
+//             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
+//         } while($result->getContinuationToken());
+//         echo "<br />";
 
         // Get blob.
 //         echo "This is the content of the blob uploaded: ";
