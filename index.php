@@ -22,32 +22,28 @@ if (isset($_GET["Cleanup"])) {
 	   $targetdir = "img/";
            $targetFile = basename($_FILES["image"]["name"]);
            if(file_put_contents($targetFile, file_get_contents($_FILES['image']["tmp_name"]))){
-		echo "Sukses";
+		//echo "Sukses";
            }
-	   else{
-	    	echo "GAGA";
-	   }
 	    
 	    $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
             fclose($myfile);
         
         # Upload file as a block blob
-            echo "Uploading BlockBlob: ".PHP_EOL;
-            echo $fileToUpload;
-            echo "<br />";
+//             echo "Uploading BlockBlob: ".PHP_EOL;
+//             echo $fileToUpload;
+//             echo "<br />";
         
             $content = file_get_contents($_FILES['image']["tmp_name"]);
             $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
-	    echo $fileToUpload;
+	    //echo $fileToUpload;
         $listBlobsOptions = new ListBlobsOptions();
         $listBlobsOptions->setPrefix($fileToUpload);
-        echo "These are the blobs present in the container: ";
+        //echo "These are the blobs present in the container: ";
         do{
             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-		echo "<p name='imageanalisis' id='imageanalisis'>".$blob->getUrl()."</p>";
 		echo "<input type='text' name='imageA' id='imageA'
                         value='".$blob->getUrl()."' />";
 		echo "<br/>";
@@ -71,10 +67,7 @@ if (isset($_GET["Cleanup"])) {
 }
 ?>
 
- <form method="post" action="index.php?Cleanup&containerName=<?php echo $containerName; ?>" enctype="multipart/form-data">
-    <input type="file" name="image" />
-    <button type="submit">Press to clean up all resources created by this sample</button>
-</form>
+
 
 <!DOCTYPE html>
 <html>
@@ -138,11 +131,13 @@ if (isset($_GET["Cleanup"])) {
 </script>
  
 <h1>Analyze image:</h1>
-Enter the URL to an image, then click the <strong>Analyze image</strong> button.
+Masukkan foto yang ingin dianalisis <strong>Analyze image</strong> button.
 <br><br>
 Image to analyze:
-<input type="text" name="inputImage" id="inputImage"
-    value="http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
+ <form method="post" action="index.php?Cleanup&containerName=<?php echo $containerName; ?>" enctype="multipart/form-data">
+    <input type="file" name="image" />
+    <button type="submit">Press to clean up all resources created by this sample</button>
+</form>
 <button onclick="processImage()">Analyze image</button>
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">
