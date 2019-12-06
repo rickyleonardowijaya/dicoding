@@ -46,7 +46,6 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 
-$fileToUpload = "HelloWorld123.txt";
 
 if (isset($_GET["Cleanup"])) {
     // Create container options object.
@@ -81,7 +80,7 @@ if (isset($_GET["Cleanup"])) {
         $targetFile = $targetDir.basename($_FILES['image']['name']);
         $file = $_FILES['image']['name'];
         move_uploaded_file($file,$targetFile);
-        $fileToUpload = "upload/".$files.".".$imageFileType;
+        $fileToUpload = "img/".$files.".".$imageFileType;
         $content = fopen($fileToUpload,"r") or die("Error");
 	    
 	
