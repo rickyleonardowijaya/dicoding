@@ -117,7 +117,7 @@ if (isset($_GET["upload"])) {
 ?>
 
 <p>Pilih gambar yang akan di Analisa</p>
-    <form action="index.php" method="get">
+    <form action="index.php" method="post">
         <input type="file" name="image" id="image"><br><br>
         <input type="submit" value="Upload" name="upload" class="btn btn-primary">
     </form>
