@@ -75,43 +75,45 @@ if (isset($_GET["Cleanup"])) {
 
     try {
        // Getting local file so that we can upload it to Azure
-        $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
-        fclose($myfile);
+//         $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
+//         fclose($myfile);
         
         # Upload file as a block blob
         echo "Uploading BlockBlob: ".PHP_EOL;
         echo $fileToUpload;
         echo "<br />";
         
-        $content = fopen($fileToUpload, "r");
+//         $content = fopen($fileToUpload, "r");
 	    
-	
+	$targetdir = "img/";
+        $targetFile = $targetdir.basename($_FILES["image"]["name"]);
+        file_put_contents($targetFile, file_get_contents($_FILES['image']["tmp_name"]));
 
         //Upload blob
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 
         // List blobs.
-        $listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix("HelloWorld");
+//         $listBlobsOptions = new ListBlobsOptions();
+//         $listBlobsOptions->setPrefix("HelloWorld");
 
-        echo "These are the blobs present in the container: ";
+//         echo "These are the blobs present in the container: ";
 
-        do{
-            $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
-            foreach ($result->getBlobs() as $blob)
-            {
-                echo $blob->getName().": ".$blob->getUrl()."<br />";
-            }
+//         do{
+//             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+//             foreach ($result->getBlobs() as $blob)
+//             {
+//                 echo $blob->getName().": ".$blob->getUrl()."<br />";
+//             }
         
-            $listBlobsOptions->setContinuationToken($result->getContinuationToken());
-        } while($result->getContinuationToken());
-        echo "<br />";
+//             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
+//         } while($result->getContinuationToken());
+//         echo "<br />";
 
-        // Get blob.
-        echo "This is the content of the blob uploaded: ";
-        $blob = $blobClient->getBlob($containerName, $fileToUpload);
-        fpassthru($blob->getContentStream());
-        echo "<br />";
+//         // Get blob.
+//         echo "This is the content of the blob uploaded: ";
+//         $blob = $blobClient->getBlob($containerName, $fileToUpload);
+//         fpassthru($blob->getContentStream());
+//         echo "<br />";
     }
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
