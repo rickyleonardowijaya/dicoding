@@ -141,7 +141,7 @@ Masukkan foto yang ingin dianalisis <strong>Analyze image</strong> button.
 Image to analyze:
  <form method="post" action="index.php?Cleanup&containerName=<?php echo $containerName; ?>" enctype="multipart/form-data">
     <input type="file" name="image" />
-    <button type="submit">Press to clean up all resources created by this sample</button>
+    <button type="submit">Kirim Foto</button>
 </form>
 <button onclick="processImage()">Analyze image</button>
 <br><br>
