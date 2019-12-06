@@ -15,7 +15,6 @@
 * places, or events is intended or should be inferred.
 *----------------------------------------------------------------------------------
 **/
-
 /** -------------------------------------------------------------
 # Azure Storage Blob Sample - Demonstrate how to use the Blob Storage service. 
 # Blob storage stores unstructured data such as text, binary data, documents or media files. 
@@ -31,28 +30,20 @@
 #  - Storage Emulator - http://azure.microsoft.com/en-us/documentation/articles/storage-use-emulator/ 
 #
 **/
-
 require_once 'vendor/autoload.php';
 require_once "./random_string.php";
-
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
-
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=gamerlistenerapp;AccountKey=9HBvgsWyPqN+afxqSuELsdHJQPcI/kDfpd/amikDzmFReuw8CtDnm4klnp87ys5u9pQpcyHvl6+BZyF5yVY0BQ==;EndpointSuffix=core.windows.net";
-
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 $fileToUpload = "tes.png";
-
-
-
 if (isset($_GET["Cleanup"])) {
     // Create container options object.
     $createContainerOptions = new CreateContainerOptions();
-
     // Set public access policy. Possible values are
     // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
     // CONTAINER_AND_BLOBS:
@@ -68,18 +59,13 @@ if (isset($_GET["Cleanup"])) {
     // If this value is not specified in the request, container data is
     // private to the account owner.
     $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
-
     // Set container metadata.
     $createContainerOptions->addMetaData("key1", "value1");
     $createContainerOptions->addMetaData("key2", "value2");
-
       $containerName = "submission";
-
     try {
        //  fopen($fileToUpload, "r");
 	        $fileToUpload = $_FILES['image']['name'];
-
-
 	     $targetdir = "img/";
         $targetFile = basename($_FILES["image"]["name"]);
         if(file_put_contents($targetFile, file_get_contents($_FILES['image']["tmp_name"]))){
@@ -90,73 +76,38 @@ if (isset($_GET["Cleanup"])) {
 	    }
 	    
 	    $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
-
         fclose($myfile);
-
         
-
         # Upload file as a block blob
-
         echo "Uploading BlockBlob: ".PHP_EOL;
-
         echo $fileToUpload;
-
         echo "<br />";
-
         
-
         $content = file_get_contents($_FILES['image']["tmp_name"]);
-
-	
-
         //Upload blob
-
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 	
         //Upload blob
 //         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
-
 //         List blobs.
         $listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix("");
-
-        echo "These are the blobs present in the container: <br/>";
-
+        $listBlobsOptions->setPrefix("HelloWorld");
+        echo "These are the blobs present in the container: ";
         do{
             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-		
-	echo "<img src='".$blob->getUrl()."' width='700' height='500'>";
-            	echo "<br/>";
-	    }
+            }
         
-//             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
-//         } while($result->getContinuationToken());
-//         echo "<br />";
-	    
-// 	    $listBaru = new ListBlobsOptions();
-// 	    $listBaru->setPrefix($fileToUpload);
-// 	            do{
-//             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
-//             foreach ($result->getBlobs() as $blob)
-//             {
-//                 echo $blob->getName().": ".$blob->getUrl()."<br />";
-		
-// 	echo "<img src='".$blob->getUrl()."' width='700' height='500'>";
-//             	echo "<br/>";
-// 	    }
-        
-//             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
-//         } while($result->getContinuationToken());
-//         echo "<br />";
-
+            $listBlobsOptions->setContinuationToken($result->getContinuationToken());
+        } while($result->getContinuationToken());
+        echo "<br />";
         // Get blob.
-//         echo "This is the content of the blob uploaded: ";
-//         $blob = $blobClient->getBlob($containerName, $fileToUpload);
-// 	    fpassthru($blob->getContentStream());
-//         echo "<br />";
+        echo "This is the content of the blob uploaded: ";
+        $blob = $blobClient->getBlob($containerName, $fileToUpload);
+        fpassthru($blob->getContentStream());
+        echo "<br />";
     }
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
@@ -180,5 +131,5 @@ if (isset($_GET["Cleanup"])) {
 
 <form method="post" action="index.php?Cleanup&containerName=<?php echo $containerName; ?>" enctype="multipart/form-data">
     <input type="file" name="image" />
-    <button type="submit">Analisis</button>
+    <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
