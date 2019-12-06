@@ -165,7 +165,7 @@ if (isset($_GET["Cleanup"])) {
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
-            "https://southeastasia.api.cognitive.microsoft.com/";
+            "https://rickyleonardowijaya.cognitiveservices.azure.com/";
  
         // Request parameters.
         var params = {
