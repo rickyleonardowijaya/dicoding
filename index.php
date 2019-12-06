@@ -119,7 +119,7 @@ if (isset($_GET["Cleanup"])) {
             // Show formatted JSON on webpage.
 		var json = JSON.stringify(data,null,2);
             $("#responseTextArea").val(json);
-// 	    $("#responseTextArea").val(data[2].description[1].text);
+// 	    $("#responseTextArea").val(data[2].description[1].text)
         })
  
         .fail(function(jqXHR, textStatus, errorThrown) {
