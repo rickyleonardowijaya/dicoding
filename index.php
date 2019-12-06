@@ -227,7 +227,7 @@ Image to analyze:
         // **********************************************
  
         // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "<subscriptionKey>";
+        var subscriptionKey = "a8b47712688c4154818536360975762b";
  
         // You must use the same Azure region in your REST API method as you used to
         // get your subscription keys. For example, if you got your subscription keys
@@ -292,6 +292,8 @@ Image to analyze:
     <input type="file" name="image" />
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
+	<input type="text" name="inputImage" id="inputImage"
+    value="http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
 <button onclick="processImage()">Analyze image</button>
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">
