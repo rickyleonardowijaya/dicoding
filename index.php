@@ -120,7 +120,7 @@ if (isset($_GET["Cleanup"])) {
 		var json = JSON.stringify(data,null,2);
 		var conjson = JSON.parse(json);
             $("#responseTextArea").val(json);
- 	    $("#imageA").val(conjson.description.captions.text);
+ 	    $("#imageA").val(conjson.categories[0].name);
         })
  
         .fail(function(jqXHR, textStatus, errorThrown) {
